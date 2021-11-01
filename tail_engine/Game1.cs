@@ -1,24 +1,26 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Content;
 
 namespace tail_engine
 {
     public class Game1 : Game
     {
-        private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
+        static public ContentManager _content;
+        static public GraphicsDeviceManager _graphics;
+        static public SpriteBatch _spriteBatch;
         Texture2D ballTexture;
         Vector2 ballposition;
-
-
 
 
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
+            _content = Content;
+            _content.RootDirectory = "Content";
             IsMouseVisible = true;
+
         }
 
         protected override void Initialize()
@@ -26,6 +28,8 @@ namespace tail_engine
             // TODO: Add your initialization logic here
             ballposition = new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2);
 
+            Helpers.WindowManager.SetWindowSize(1024, 768, _graphics);
+            Helpers.WindowManager.ToggleFullScreen(_graphics);
 
             base.Initialize();
         }
@@ -33,7 +37,7 @@ namespace tail_engine
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            ballTexture = Content.Load<Texture2D>("ball");
+            ballTexture = _content.Load<Texture2D>("ball");
 
             // TODO: use this.Content to load your game content here
         }
@@ -43,9 +47,8 @@ namespace tail_engine
             if (Helpers.InputWrapper.Buttons.Back == ButtonState.Pressed) Exit();
             /* if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit(); */
+            if (Helpers.InputWrapper.Buttons.A == ButtonState.Pressed) Helpers.WindowManager.ToggleFullScreen(_graphics);
             ballposition += Helpers.InputWrapper.Sticks.LeftStick;
-
-            
 
             // TODO: Add your update logic here
 
