@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
+using tail_engine.Helpers;
 
 namespace tail_engine
 {
@@ -12,6 +13,15 @@ namespace tail_engine
         static public SpriteBatch _spriteBatch;
         Texture2D ballTexture;
         Vector2 ballposition;
+
+        //testing the sprite object
+        int numSprites = 4;
+         
+        
+      
+
+        
+        
 
 
         public Game1()
