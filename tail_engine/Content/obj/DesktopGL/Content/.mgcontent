@@ -5,8 +5,16 @@
   <Config />
   <SourceFiles>
     <File>C:/Users/rodrigo.barroso/source/repos/tail_engine/tail_engine/Content/ball.png</File>
+    <File>C:/Users/rodrigo.barroso/source/repos/tail_engine/tail_engine/Content/tile_0004.png</File>
+    <File>C:/Users/rodrigo.barroso/source/repos/tail_engine/tail_engine/Content/tile_0005.png</File>
+    <File>C:/Users/rodrigo.barroso/source/repos/tail_engine/tail_engine/Content/tile_0006.png</File>
+    <File>C:/Users/rodrigo.barroso/source/repos/tail_engine/tail_engine/Content/tile_0007.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>

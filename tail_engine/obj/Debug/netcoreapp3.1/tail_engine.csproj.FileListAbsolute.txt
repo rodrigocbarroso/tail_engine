@@ -46,3 +46,7 @@ C:\Users\cream\source\repos\tail_engine\tail_engine\obj\Debug\netcoreapp3.1\tail
 C:\Users\cream\source\repos\tail_engine\tail_engine\obj\Debug\netcoreapp3.1\tail_engine.dll
 C:\Users\cream\source\repos\tail_engine\tail_engine\obj\Debug\netcoreapp3.1\tail_engine.pdb
 C:\Users\cream\source\repos\tail_engine\tail_engine\obj\Debug\netcoreapp3.1\tail_engine.genruntimeconfig.cache
+C:\Users\rodrigo.barroso\source\repos\tail_engine\tail_engine\bin\Debug\netcoreapp3.1\Content\tile_0004.xnb
+C:\Users\rodrigo.barroso\source\repos\tail_engine\tail_engine\bin\Debug\netcoreapp3.1\Content\tile_0005.xnb
+C:\Users\rodrigo.barroso\source\repos\tail_engine\tail_engine\bin\Debug\netcoreapp3.1\Content\tile_0006.xnb
+C:\Users\rodrigo.barroso\source\repos\tail_engine\tail_engine\bin\Debug\netcoreapp3.1\Content\tile_0007.xnb

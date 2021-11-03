@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using tail_engine.Helpers;
+using System.Collections.Generic;
 
 namespace tail_engine
 {
@@ -16,13 +17,15 @@ namespace tail_engine
 
         //testing the sprite object
         int numSprites = 4;
-         
+        List<Sprite> listOfSprite;
+        Sprite[] spriteObjects; //An array of Sprite objects
+        int currentIndex = 0;
+
+        //testing camera movement
+        float camX = 0f;
+        float camY = 0f;
         
       
-
-        
-        
-
 
         public Game1()
         {
@@ -38,7 +41,7 @@ namespace tail_engine
             // TODO: Add your initialization logic here
 
             Helpers.WindowManager.SetWindowSize(640, 480, _graphics);
-            Helpers.WindowManager.ToggleFullScreen(_graphics);
+            //Helpers.WindowManager.ToggleFullScreen(_graphics);
 
             ballposition = new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2);
 
@@ -49,9 +52,24 @@ namespace tail_engine
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            ballTexture = _content.Load<Texture2D>("ball");
 
             // TODO: use this.Content to load your game content here
+            ballTexture = _content.Load<Texture2D>("ball");
+
+
+            //Define Camera Window Bounds
+            Camera.SetCameraWindow(new Vector2(0f, 0f), 640f);
+
+
+
+            //spriteObjects = new Sprite[numSprites];
+            listOfSprite = new List<Sprite>();
+            listOfSprite.Add(new Sprite("tile_0004", new Vector2(32, 32), new Vector2(10, 10)));
+            listOfSprite.Add(new Sprite("tile_0005", new Vector2(32, 32), new Vector2(100, 100)));
+            listOfSprite.Add(new Sprite("tile_0006", new Vector2(32, 32), new Vector2(200, 200)));
+            listOfSprite.Add(new Sprite("tile_0007", new Vector2(32, 32), new Vector2(400, 400)));
+
+
         }
 
         protected override void Update(GameTime gameTime)
@@ -60,9 +78,19 @@ namespace tail_engine
             /* if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit(); */
             if (Helpers.InputWrapper.Buttons.A == ButtonState.Pressed) Helpers.WindowManager.ToggleFullScreen(_graphics);
-            ballposition += Helpers.InputWrapper.Sticks.LeftStick;
 
-            // TODO: Add your update logic here
+            if (InputWrapper.Buttons.B == ButtonState.Pressed)
+            {
+                currentIndex = (currentIndex + 1) % listOfSprite.Count;
+            }
+
+            listOfSprite[currentIndex].Update(InputWrapper.Sticks.LeftStick,InputWrapper.Sticks.RightStick);
+
+            //camera movement
+            camX++;
+            camY++;
+
+
 
             base.Update(gameTime);
         }
@@ -71,12 +99,21 @@ namespace tail_engine
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            _spriteBatch.Begin();
-            _spriteBatch.Draw(ballTexture, ballposition , Color.White);
-            _spriteBatch.End();
+            _spriteBatch.Begin(SpriteSortMode.Deferred,BlendState.NonPremultiplied,SamplerState.PointClamp);
+            _spriteBatch.Draw(ballTexture, Camera.ComputePixelRectangle(ballposition,
+                                                                        new Vector2((float)ballTexture.Width, (float)ballTexture.Height)), Color.White);
+
+            Camera.SetCameraWindow(new Vector2(camX, camY), 640f);
 
             // TODO: Add your drawing code here
+            foreach (Sprite x in listOfSprite)
+            {
+                x.Draw();
+            }
 
+            _spriteBatch.End();
+
+           
             base.Draw(gameTime);
         }
     }

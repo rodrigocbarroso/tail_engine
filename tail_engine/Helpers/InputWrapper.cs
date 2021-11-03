@@ -62,6 +62,11 @@ namespace tail_engine.Helpers
         private const Keys downStickL = Keys.Down;
         private const Keys leftStickL = Keys.Left;
         private const Keys rightStickL = Keys.Right;
+        private const Keys upStickR = Keys.W;
+        private const Keys downStickR = Keys.S;
+        private const Keys leftStickR = Keys.A;
+        private const Keys rightStickR = Keys.D;
+
         private const float _stickValue = 0.75f;
         
 
@@ -75,11 +80,11 @@ namespace tail_engine.Helpers
             }
 
             if(Keyboard.GetState().IsKeyDown(up)) {
-                result.Y -= _stickValue;
+                result.Y += _stickValue;
             }
             if(Keyboard.GetState().IsKeyDown(down))
             {
-                result.Y += _stickValue;
+                result.Y -= _stickValue;
             }
             if (Keyboard.GetState().IsKeyDown(left)) result.X -= _stickValue;
             if (Keyboard.GetState().IsKeyDown(right)) result.X += _stickValue;
@@ -88,7 +93,7 @@ namespace tail_engine.Helpers
         }
 
         public Vector2 LeftStick { get { return GetStickState(GamePad.GetState(PlayerIndex.One).ThumbSticks.Left, upStickL, downStickL, leftStickL, rightStickL); } }
-        public Vector2 RightStick { get { return GetStickState(GamePad.GetState(PlayerIndex.One).ThumbSticks.Right, upStickL, downStickL, leftStickL, rightStickL); } }
+        public Vector2 RightStick { get { return GetStickState(GamePad.GetState(PlayerIndex.One).ThumbSticks.Right, upStickR, downStickR, leftStickR, rightStickR); } }
 
     }
 
