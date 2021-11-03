@@ -26,10 +26,12 @@ namespace tail_engine
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+
+            Helpers.WindowManager.SetWindowSize(640, 480, _graphics);
+            Helpers.WindowManager.ToggleFullScreen(_graphics);
+
             ballposition = new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight / 2);
 
-            Helpers.WindowManager.SetWindowSize(1024, 768, _graphics);
-            Helpers.WindowManager.ToggleFullScreen(_graphics);
 
             base.Initialize();
         }
