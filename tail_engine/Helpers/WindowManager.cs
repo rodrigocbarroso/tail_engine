@@ -16,16 +16,12 @@ namespace tail_engine.Helpers
             _graphics.PreferredBackBufferWidth = width;
             _graphics.PreferredBackBufferHeight = height;
             _graphics.ApplyChanges();
-            
-            
-
         }
 
         public static void ToggleFullScreen(GraphicsDeviceManager _graphics)
         {
             _graphics.ToggleFullScreen();
             _graphics.ApplyChanges();
-            
         }
 
 

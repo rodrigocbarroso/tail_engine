@@ -86,10 +86,7 @@ namespace tail_engine
 
             listOfSprite[currentIndex].Update(InputWrapper.Sticks.LeftStick,InputWrapper.Sticks.RightStick);
 
-            //camera movement
-            camX++;
-            camY++;
-
+        
 
 
             base.Update(gameTime);
@@ -103,7 +100,7 @@ namespace tail_engine
             _spriteBatch.Draw(ballTexture, Camera.ComputePixelRectangle(ballposition,
                                                                         new Vector2((float)ballTexture.Width, (float)ballTexture.Height)), Color.White);
 
-            Camera.SetCameraWindow(new Vector2(camX, camY), 640f);
+           
 
             // TODO: Add your drawing code here
             foreach (Sprite x in listOfSprite)
@@ -111,6 +108,7 @@ namespace tail_engine
                 x.Draw();
             }
 
+            FontSupport.PrintStatus("testing 123 font status");
             _spriteBatch.End();
 
            

@@ -23,7 +23,7 @@ namespace tail_engine.Helpers
 
 
         /// <summary>
-        ///  Return ButtonState (pressed or released) of buttons. 
+        ///  Return ButtonState (.pressed or .released) of buttons. 
         /// </summary>
         /// <param name="GamepadButton">Gamepad</param>
         /// <param name="key">Keyboard</param>
@@ -53,9 +53,6 @@ namespace tail_engine.Helpers
     }
 
 
-    /// <summary>
-    /// Returns 
-    /// </summary>
     internal struct AllInputSticks
     {
         private const Keys upStickL = Keys.Up;
@@ -92,17 +89,27 @@ namespace tail_engine.Helpers
             return result;
         }
 
+        /// <summary>
+        /// Returns a Vector with the direction input of the corresponding stick
+        /// </summary>
         public Vector2 LeftStick { get { return GetStickState(GamePad.GetState(PlayerIndex.One).ThumbSticks.Left, upStickL, downStickL, leftStickL, rightStickL); } }
         public Vector2 RightStick { get { return GetStickState(GamePad.GetState(PlayerIndex.One).ThumbSticks.Right, upStickR, downStickR, leftStickR, rightStickR); } }
 
     }
 
+    //Do i need a mouse struct? Or does the mouse acts as a stick? What kind of mouse input can i get?
+    internal struct Mouse
+    {
+
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
     static class InputWrapper
     {
-        
-        static public AllInputButtons Buttons = new AllInputButtons();
-        static public AllInputSticks Sticks = new AllInputSticks();
-
+        static public AllInputButtons Buttons = new AllInputButtons(); //Returns a ButtonState obj (Pressed or Released)
+        static public AllInputSticks Sticks = new AllInputSticks(); //Returns a Vector2 obj
     }
 
 }

@@ -50,3 +50,4 @@ C:\Users\rodrigo.barroso\source\repos\tail_engine\tail_engine\bin\Debug\netcorea
 C:\Users\rodrigo.barroso\source\repos\tail_engine\tail_engine\bin\Debug\netcoreapp3.1\Content\tile_0005.xnb
 C:\Users\rodrigo.barroso\source\repos\tail_engine\tail_engine\bin\Debug\netcoreapp3.1\Content\tile_0006.xnb
 C:\Users\rodrigo.barroso\source\repos\tail_engine\tail_engine\bin\Debug\netcoreapp3.1\Content\tile_0007.xnb
+C:\Users\rodrigo.barroso\source\repos\tail_engine\tail_engine\bin\Debug\netcoreapp3.1\Content\Arial.xnb
