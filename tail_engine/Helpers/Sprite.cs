@@ -9,8 +9,10 @@ namespace tail_engine.Helpers
     {
 
         protected Vector2 size;
-        protected Vector2 position;
+        public Vector2 position;
         protected Texture2D texture;
+        public Vector2 minBound { get { return position - (0.5f * size);  } }
+        public Vector2 maxBound { get { return position + (0.5f * size);  } }
         
         public Sprite(string arg_texture, Vector2 arg_size, Vector2 arg_position)
         {

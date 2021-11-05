@@ -11,6 +11,9 @@ namespace tail_engine.Helpers
         static private Vector2 origin = Vector2.Zero; //World Origin
         static private float worldWidth = 100f; //world width
         static private float cameraPixelRatio = -1f; //ratio between camera and pixel space
+        static private float worldHeight = -1f; //i don't get this
+
+
 
         static private float cameraWindowToPixelRatio()
         {
@@ -56,5 +59,8 @@ namespace tail_engine.Helpers
 
             return new Rectangle(x, y, width, height);
         }
+
+        static public Vector2 CameraWindowLowerLeftPosition { get { return origin; } }
+        static public Vector2 CameraWindowUpperRightPosition { get { return origin + new Vector2(worldWidth, (worldWidth * cameraWindowToPixelRatio())); } }
     }
 }

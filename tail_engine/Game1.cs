@@ -64,7 +64,7 @@ namespace tail_engine
 
             //spriteObjects = new Sprite[numSprites];
             listOfSprite = new List<Sprite>();
-            listOfSprite.Add(new Sprite("tile_0004", new Vector2(32, 32), new Vector2(10, 10)));
+            listOfSprite.Add(new Sprite("tile_0004", new Vector2(32, 32), new Vector2(0, 0)));
             listOfSprite.Add(new Sprite("tile_0005", new Vector2(32, 32), new Vector2(100, 100)));
             listOfSprite.Add(new Sprite("tile_0006", new Vector2(32, 32), new Vector2(200, 200)));
             listOfSprite.Add(new Sprite("tile_0007", new Vector2(32, 32), new Vector2(400, 400)));
@@ -79,11 +79,12 @@ namespace tail_engine
                 Exit(); */
             if (Helpers.InputWrapper.Buttons.A == ButtonState.Pressed) Helpers.WindowManager.ToggleFullScreen(_graphics);
 
+            //alternates sprite selection
             if (InputWrapper.Buttons.B == ButtonState.Pressed)
             {
                 currentIndex = (currentIndex + 1) % listOfSprite.Count;
             }
-
+            //moves and scales selected sprite
             listOfSprite[currentIndex].Update(InputWrapper.Sticks.LeftStick,InputWrapper.Sticks.RightStick);
 
         
@@ -97,8 +98,12 @@ namespace tail_engine
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             _spriteBatch.Begin(SpriteSortMode.Deferred,BlendState.NonPremultiplied,SamplerState.PointClamp);
-            _spriteBatch.Draw(ballTexture, Camera.ComputePixelRectangle(ballposition,
-                                                                        new Vector2((float)ballTexture.Width, (float)ballTexture.Height)), Color.White);
+            
+            _spriteBatch.Draw(ballTexture, 
+                                Camera.ComputePixelRectangle(ballposition,
+                                                             new Vector2((float)ballTexture.Width,
+                                                             (float)ballTexture.Height)),
+                                Color.White);
 
            
 
@@ -106,9 +111,15 @@ namespace tail_engine
             foreach (Sprite x in listOfSprite)
             {
                 x.Draw();
+                
             }
+            FontSupport.PrintStatus(Camera.CameraWindowLowerLeftPosition.ToString() + Camera.CameraWindowUpperRightPosition.ToString());
+            FontSupport.PrintStatus(listOfSprite[currentIndex].position.ToString(),
+                                    Color.White,
+                                    new Vector2(20f,20f)
 
-            FontSupport.PrintStatus("testing 123 font status");
+                                    );
+
             _spriteBatch.End();
 
            
